@@ -144,7 +144,7 @@
 			<type>remote</type>
 		</container>
 		<configuration>
-			<type>runtime</type>
+			<type>runtime</type>		
 			<cargo.remote.username>admin</cargo.remote.username>
 			<cargo.remote.password>123456</cargo.remote.password>
 		</configuration>
