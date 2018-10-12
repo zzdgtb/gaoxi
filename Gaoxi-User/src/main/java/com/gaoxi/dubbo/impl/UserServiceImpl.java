@@ -3,30 +3,47 @@ package com.gaoxi.dubbo.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.data.redis.core.RedisTemplate;
+
 import com.alibaba.dubbo.config.annotation.Service;
-import com.gaoxi.base.http.LoginReq;
 import com.gaoxi.entity.user.UserEntity;
+import com.gaoxi.exception.BusinessException;
+import com.gaoxi.mapper.UserMapper;
+import com.gaoxi.model.user.vo.request.LoginReqVO;
+import com.gaoxi.service.base.AbstractBaseService;
 import com.gaoxi.service.user.UserService;
+import tk.mybatis.mapper.entity.Example;
 
 @Service(version = "1.0.0")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends AbstractBaseService<UserMapper, UserEntity> implements UserService {
+	
+	@Resource
+    private RedisTemplate<String, String> rdisTemplate;
 	
 	private static List<UserEntity> userlist = new ArrayList<UserEntity>();
 	
-	static{
-		userlist.add(new UserEntity("张三","1234"));
-		userlist.add(new UserEntity("李四","456"));
-	}
     @Override
-    public UserEntity login(LoginReq loginReq) {
-    	if(null==loginReq||null==loginReq.getUsername()||null==loginReq.getPwd()){
-    		return null;
+    public UserEntity login(LoginReqVO loginReq) {
+    	String code = (String) rdisTemplate.opsForValue().get(loginReq.getPhone()+"_verifycode");
+    	if(null==code){
+    		throw new BusinessException("INVALID_CODE", "未获取验证码或验证码已过期！");
     	}
-        for(UserEntity u :userlist){
-        	if(u.getUsername().equals(loginReq.getUsername())&&u.getPwd().equals(loginReq.getPwd())){
-        		return u;
-        	}
-        }
-        return null;
+    	if(!code.equals(loginReq.getVerifycode())){
+    		throw new BusinessException("ERROR_CODE", "验证码错误！");
+    	}
+    	 Example userExample = new Example(UserEntity.class);
+    	 userExample.or().andEqualTo("phone", loginReq.getPhone());
+    	 UserEntity userEntity = this.selectOneByExample(userExample);
+    	 UserEntity u = null;
+         if(userEntity == null) {
+        	 u = new UserEntity();
+        	 u.setNickName("user_"+loginReq.getPhone());
+        	 u.setPhone(loginReq.getPhone());
+        	 this.insert(u);
+         }    
+        return u;
     }
+	
 }

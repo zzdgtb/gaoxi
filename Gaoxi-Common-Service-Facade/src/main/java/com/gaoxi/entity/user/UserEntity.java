@@ -1,45 +1,46 @@
 package com.gaoxi.entity.user;
 
+import javax.persistence.*;
+
+import lombok.Data;
+
 import java.io.Serializable;
 
-public class UserEntity implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+/**
+ * Created by Administrator on 2018/10/7.
+ */
+@Data
+@Table(name = "u_user")
+public class UserEntity implements Serializable {
 
-	private String username;
-	
-	private String pwd;
-	
-	
-	public UserEntity(String username, String pwd) {
-		super();
-		this.username = username;
-		this.pwd = pwd;
-	}
+    private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    /**
+     * name
+     */
+    @Column(name = "name")
+    private String name;
 
-	public String getUsername() {
-		return username;
-	}
-	
+    /**
+     * owner_account
+     */
+    @Column(name = "phone")
+    private String phone;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
+    /**
+     * owner_account_id
+     */
+    @Column(name = "nick_name")
+    private String nickName;
 
-	public String getPwd() {
-		return pwd;
-	}
-	
+   
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-	
-	
-	
 }
+

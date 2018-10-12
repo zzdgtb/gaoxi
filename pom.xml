@@ -14,6 +14,7 @@
 		<module>Gaoxi-User</module>
 		<module>Gaoxi-Redis</module>
 		<module>Gaoxi-Controller</module>
+		<module>Gaoxi-SMS</module>
 		<module>Gaoxi-Common-Service-Facade</module>
 	</modules>
 	<name>gaoxi</name>
@@ -100,6 +101,22 @@
 			<artifactId>spring-boot-starter-dubbo</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<!-- redis -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <!-- 分页 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 		<!-- <dependency>
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
@@ -125,6 +142,11 @@
 			<artifactId>guava</artifactId>
 			<version>23.3-jre</version>
 		</dependency>
+		<dependency>
+   			 <groupId>org.projectlombok</groupId>
+   			 <artifactId>lombok</artifactId>
+   			 <scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -133,31 +155,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-	<groupId>org.codehaus.cargo</groupId>
-	<artifactId>cargo-maven2-plugin</artifactId>
-	<version>1.6.5</version>
-	<configuration>
-		<container>
-			<!-- 指明使用的tomcat服务器版本 -->
-			<containerId>tomcat8x</containerId>
-			<type>remote</type>
-		</container>
-		<configuration>
-			<type>runtime</type>		
-			<cargo.remote.username>admin</cargo.remote.username>
-			<cargo.remote.password>123456</cargo.remote.password>
-		</configuration>
-	</configuration>
-	<executions>
-		<execution>
-			<phase>deploy</phase>
-			<goals>
-				<goal>redeploy</goal>
-			</goals>
-		</execution>
-	</executions>
-</plugin>
 		</plugins>
 	</build>
 
