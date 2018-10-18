@@ -21,7 +21,7 @@ public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     /**
      * name
      */
@@ -40,7 +40,6 @@ public class UserEntity implements Serializable {
     @Column(name = "nick_name")
     private String nickName;
 
-   
 
 }
 

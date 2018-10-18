@@ -3,7 +3,7 @@ package com.gaoxi.exception;
 /**
  * Created by Administrator on 2018/10/7.
  */
-public class SystemException extends RuntimeException{
+public class SystemException extends RuntimeException {
 
     /**
      *

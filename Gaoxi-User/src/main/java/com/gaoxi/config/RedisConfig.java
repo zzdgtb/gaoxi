@@ -11,17 +11,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
- * 
- *<p>Description: </p>  
- *@author wh
- *@date 2018年10月12日 
- *@version 1.0.0
+ * <p>Description: </p>
+ *
+ * @author wh
+ * @version 1.0.0
+ * @date 2018年10月12日
  */
 @Configuration
 public class RedisConfig {
 
-	@Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory){
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
         template.setConnectionFactory(factory);
         setSerializer(template);//设置序列化工具
@@ -29,8 +29,8 @@ public class RedisConfig {
         return template;
     }
 
-    private void setSerializer(RedisTemplate<String, Object> template){
-        @SuppressWarnings({ "rawtypes", "unchecked" })
+    private void setSerializer(RedisTemplate<String, Object> template) {
+        @SuppressWarnings({"rawtypes", "unchecked"})
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);

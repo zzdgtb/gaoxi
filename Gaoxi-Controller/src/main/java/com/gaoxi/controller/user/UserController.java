@@ -18,13 +18,13 @@ public class UserController {
 
     @Reference(version = "1.0.0")
     private UserService userService;
-    
-   @GetMapping("/login")
+
+    @GetMapping("/login")
     public ResultVO login(LoginReqVO loginReq, HttpServletResponse httpRsp) {
 
         // 登录鉴权
         UserEntity userEntity = userService.login(loginReq);
-        
+
         return ResultVO.success(userEntity);
     }
 }

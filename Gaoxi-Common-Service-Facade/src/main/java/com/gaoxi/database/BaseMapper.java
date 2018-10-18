@@ -11,6 +11,6 @@ import tk.mybatis.mapper.common.special.InsertListMapper;
 /**
  * 通用数据层接口，其他mapper请继承该mapper
  */
-public interface BaseMapper<T> extends Mapper<T>, MySqlMapper<T>, InsertListMapper<T>{
+public interface BaseMapper<T> extends Mapper<T>, MySqlMapper<T>, InsertListMapper<T> {
 
 }

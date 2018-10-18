@@ -1,4 +1,5 @@
 package com.gaoxi.service.base;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,7 +19,9 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T extends Ser
     @Autowired
     protected M mapper;
 
-    /*** insert start ***/
+    /***
+     * insert start
+     ***/
     public int insert(T t) {
         return this.mapper.insert(t);
     }
@@ -33,8 +36,10 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T extends Ser
 
     /*** insert end ***/
 
-    /*** delete start ***/
-    
+    /***
+     * delete start
+     ***/
+
     public int delete(T t) {
         return mapper.delete(t);
     }
@@ -49,7 +54,9 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T extends Ser
 
     /*** delete end ***/
 
-    /*** update start ***/
+    /***
+     * update start
+     ***/
     @Override
     public int updateByPrimaryKey(T t) {
         return this.mapper.updateByPrimaryKey(t);
@@ -72,7 +79,9 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T extends Ser
 
     /*** update end ***/
 
-    /*** select start ***/
+    /***
+     * select start
+     ***/
     public List<T> select(T t) {
         return this.mapper.select(t);
     }

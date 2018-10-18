@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-@MapperScan(basePackages ={"com.gaoxi.mapper"})
+@MapperScan(basePackages = {"com.gaoxi.mapper"})
 public class Application extends SpringBootServletInitializer {
 
     @Override
