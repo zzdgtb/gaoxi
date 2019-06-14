@@ -20,7 +20,6 @@ import java.util.Date;
  *
  */
 public class ChatMessageEo implements Serializable {
-
     /**
      * 用一句话描述这是什么
      */
