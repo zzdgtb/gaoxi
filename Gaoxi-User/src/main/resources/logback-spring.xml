@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+       <!-- <property resource="config/config.properties"/> -->
+
+       <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+              <encoder>
+                     <pattern>%date %-5level [v:${yes.log.version}] [h:${yes.server.localHost}] [m:${dtyunxi.env.module}] [reqId:%X{yes.req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n</pattern>
+              </encoder>
+       </appender>
+
+       <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+              <file>${yes.server.logWorkDir}/${dtyunxi.env.module}/${dtyunxi.env.module}.log</file>
+              <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                     <fileNamePattern>${yes.server.logWorkDir}/${dtyunxi.env.module}/${dtyunxi.env.module}-%d{yyyy-MM-dd}.%i.log.gz
+                     </fileNamePattern>
+                     <maxFileSize>100MB</maxFileSize>
+                     <maxHistory>30</maxHistory>
+                     <totalSizeCap>20GB</totalSizeCap>
+              </rollingPolicy>
+              <encoder>
+                     <pattern>%date %-5level [v:${yes.log.version}] [h:${yes.server.localHost}] [m:${dtyunxi.env.module}] [reqId:%X{yes.req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n
+                     </pattern>
+              </encoder>
+       </appender>
+
+       <!-- 操作日志logback配置 -->
+       <appender name="OPERATORLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+              <file>${yes.server.logWorkDir}/${dtyunxi.env.module}/xl_flume.log</file>
+              <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                     <fileNamePattern>${yes.server.logWorkDir}/${dtyunxi.env.module}/xl_flume_%d{yyyy-MM-dd}.%i.log.gz
+                     </fileNamePattern>
+                     <maxFileSize>100MB</maxFileSize>
+                     <maxHistory>30</maxHistory>
+                     <totalSizeCap>20GB</totalSizeCap>
+              </rollingPolicy>
+              <encoder>
+                     <pattern>%msg%n</pattern>
+              </encoder>
+       </appender>
+
+       <logger name="com.dtyunxi.huieryun.log.operatelog.OperatorLogger" level="INFO" additivity="false">
+              <appender-ref ref="OPERATORLOG"/>
+       </logger>
+
+
+       <root level="${dtyunxi.env.logger.level}">
+              <appender-ref ref="ROLLING"/>
+              <appender-ref ref="STDOUT"/>
+       </root>
+</configuration>
