@@ -43,7 +43,7 @@
        </logger>
 
 
-       <root level="${dtyunxi.env.logger.level}">
+       <root level="INFO">
               <appender-ref ref="ROLLING"/>
               <appender-ref ref="STDOUT"/>
        </root>

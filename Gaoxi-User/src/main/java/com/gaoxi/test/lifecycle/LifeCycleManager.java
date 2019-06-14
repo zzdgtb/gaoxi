@@ -6,5 +6,6 @@ package com.gaoxi.test.lifecycle;
  * @Date: 2018/12/27
  * @version: 1.0.0
  */
-public class LifeCycleManager {
+public abstract class LifeCycleManager implements ILifeCycle {
+
 }

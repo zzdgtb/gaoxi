@@ -1,10 +1,9 @@
 package com.gaoxi.Test;
 
-import com.gaoxi.entity.user.UserEntity;
-import com.gaoxi.model.user.vo.request.LoginReqVO;
+import com.gaoxi.config.RabbitUtil;
 import com.gaoxi.model.user.vo.response.ResultVO;
-import com.gaoxi.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gaoxi.test.nettysocket.DeleteMemberDto;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,30 +17,32 @@ import java.util.*;
  */
 @RestController
 public class TestController {
-    @Autowired
-    private UserService userService;
 
     @Resource
     private RedisTemplate<String, String> rdisTemplate;
+    @Resource
+    private RabbitUtil rabbitUtil;
 
     @GetMapping("/hello")
     public String index() {
         return "hello world!!!";
     }
-
-    @GetMapping("/logintest")
-    public UserEntity loginTest() {
-        return userService.login(new LoginReqVO("张三", "123"));
+    @GetMapping("/mq")
+    public String mq() {
+        TopicExchange topicExchange = new TopicExchange("DELETE_TOPIC");
+        DeleteMemberDto dto =new DeleteMemberDto();
+        dto.setMemberId(2134345456L);
+        rabbitUtil.sendMessageToExchange(topicExchange,"ENV_USER_DELETE_MESSAGE",dto);
+        return "hello world!!!";
     }
-    
     @GetMapping("/testtoken")
     public ResultVO testToken() {
-    	 MD5TokenUtil myGUID = new MD5TokenUtil();
+    	 com.gaoxi.Test.MD5TokenUtil myGUID = new com.gaoxi.Test.MD5TokenUtil();
         return ResultVO.success(myGUID.valueAfterMD5);
     }
     @GetMapping("/testorderid")
     public ResultVO testOrderid() {
-        return ResultVO.success(RandomUtils.getRandomStringWithTime(new Date(),6));
+        return ResultVO.success(com.gaoxi.Test.RandomUtils.getRandomStringWithTime(new Date(),6));
     }
     @GetMapping("/test")
     public ResultVO testRedis() {

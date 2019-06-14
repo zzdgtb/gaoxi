@@ -7,4 +7,9 @@ package com.gaoxi.test.observe;
  * @version: 1.0.0
  */
 public interface Listen {
+    /**
+     * 监听事件
+     * @param evt
+     */
+    void listen(Event evt);
 }

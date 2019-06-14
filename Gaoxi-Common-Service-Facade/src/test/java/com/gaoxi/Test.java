@@ -1,3 +1,4 @@
+/*
 package com.gaoxi;
 
 import java.util.concurrent.FutureTask;
@@ -40,3 +41,4 @@ public class Test {
         }
 	}
 }
+*/

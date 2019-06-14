@@ -7,4 +7,6 @@ package com.gaoxi.test.lifecycle;
  * @version: 1.0.0
  */
 public interface ILifeCycleListener {
+
+    void listenLifeCycleEvent(LifeCycleEvent evt);
 }

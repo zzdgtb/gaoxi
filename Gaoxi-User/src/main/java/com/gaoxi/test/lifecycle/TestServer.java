@@ -7,4 +7,9 @@ package com.gaoxi.test.lifecycle;
  * @version: 1.0.0
  */
 public class TestServer {
+    public static void main(String[] args){
+        SocketServer server = new SocketServer();
+        server.addLifecycleListener(new DefaultLifeCycleListener());
+        server.start();
+    }
 }

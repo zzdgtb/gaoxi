@@ -1,62 +1,76 @@
-package com.framework.loippi.support;
+/*
+package com.gaoxi.test.excel;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.BeanUtilsBean;
-import org.apache.commons.beanutils.BeanUtilsBean2;
-import org.apache.commons.beanutils.ConvertUtils;
-import org.apache.commons.beanutils.Converter;
-import org.apache.commons.beanutils.PropertyUtils;
+import com.alibaba.dubbo.common.utils.StringUtils;
+import org.apache.commons.beanutils.*;
 import org.apache.commons.beanutils.converters.DateConverter;
-import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.util.Assert;
-import org.springframework.web.servlet.view.document.AbstractExcelView;
-
-import javolution.util.Index.Decimal;
+import org.springframework.web.servlet.view.document.AbstractXlsView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
+*/
 /**
  * Excel视图
  * 
  * @author Mounate Yan。
  * @version 1.0 
- */
-public class ExcelView extends AbstractExcelView {
+ *//*
 
-	/** 默认日期格式配比 */
+public class ExcelView extends AbstractXlsView {
+
+	*/
+/** 默认日期格式配比 *//*
+
 	private static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
-	/** 文件名称 */
+	*/
+/** 文件名称 *//*
+
 	private String filename;
 
-	/** 表名称 */
+	*/
+/** 表名称 *//*
+
 	private String sheetName;
 
-	/** 属性 */
+	*/
+/** 属性 *//*
+
 	private String[] properties;
 
-	/** 标题 */
+	*/
+/** 标题 *//*
+
 	private String[] titles;
 
-	/** 列宽 */
+	*/
+/** 列宽 *//*
+
 	private Integer[] widths;
 
-	/** 类型转换 */
+	*/
+/** 类型转换 *//*
+
 	private Converter[] converters;
 
-	/** 数据 */
+	*/
+/** 数据 *//*
+
 	private Collection<?> data;
 
-	/** 附加内容 */
+	*/
+/** 附加内容 *//*
+
 	private String[] contents;
 
 	static {
@@ -92,7 +106,8 @@ public class ExcelView extends AbstractExcelView {
 		}, BigDecimal.class);
 	}
 
-	/**
+	*/
+/**
 	 * @param filename
 	 *            文件名称
 	 * @param sheetName
@@ -109,7 +124,8 @@ public class ExcelView extends AbstractExcelView {
 	 *            数据
 	 * @param contents
 	 *            附加内容
-	 */
+	 *//*
+
 	public ExcelView(String filename, String sheetName, String[] properties, String[] titles, Integer[] widths, Converter[] converters, Collection<?> data, String[] contents) {
 		this.filename = filename;
 		this.sheetName = sheetName;
@@ -121,7 +137,8 @@ public class ExcelView extends AbstractExcelView {
 		this.contents = contents;
 	}
 
-	/**
+	*/
+/**
 	 * @param properties
 	 *            属性
 	 * @param titles
@@ -130,7 +147,8 @@ public class ExcelView extends AbstractExcelView {
 	 *            数据
 	 * @param contents
 	 *            附加内容
-	 */
+	 *//*
+
 	public ExcelView(String[] properties, String[] titles, Collection<?> data, String[] contents) {
 		this.properties = properties;
 		this.titles = titles;
@@ -138,32 +156,37 @@ public class ExcelView extends AbstractExcelView {
 		this.contents = contents;
 	}
 
-	/**
+	*/
+/**
 	 * @param properties
 	 *            属性
 	 * @param titles
 	 *            标题
 	 * @param data
 	 *            数据
-	 */
+	 *//*
+
 	public ExcelView(String[] properties, String[] titles, Collection<?> data) {
 		this.properties = properties;
 		this.titles = titles;
 		this.data = data;
 	}
 
-	/**
+	*/
+/**
 	 * @param properties
 	 *            属性
 	 * @param data
 	 *            数据
-	 */
+	 *//*
+
 	public ExcelView(String[] properties, Collection<?> data) {
 		this.properties = properties;
 		this.data = data;
 	}
 
-	/**
+	*/
+/**
 	 * 生成Excel文档
 	 * 
 	 * @param model
@@ -174,9 +197,10 @@ public class ExcelView extends AbstractExcelView {
 	 *            request
 	 * @param response
 	 *            response
-	 */
-	@Override
-	public void buildExcelDocument(Map<String, Object> model, HSSFWorkbook workbook, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	 *//*
+
+	public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		workbook = new HSSFWorkbook();
 		Assert.notEmpty(properties);
 		HSSFSheet sheet;
 		if (StringUtils.isNotEmpty(sheetName)) {
@@ -274,156 +298,192 @@ public class ExcelView extends AbstractExcelView {
 		}
 	}
 
-	/**
+	@Override
+	protected  void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	}
+	*/
+/**
 	 * 获取文件名称
 	 * 
 	 * @return 文件名称
-	 */
+	 *//*
+
 	public String getFileName() {
 		return filename;
 	}
 
-	/**
+	*/
+/**
 	 * 设置文件名称
 	 * 
 	 * @param filename
 	 *            文件名称
-	 */
+	 *//*
+
 	public void setFileName(String filename) {
 		this.filename = filename;
 	}
 
-	/**
+	*/
+/**
 	 * 获取表名称
 	 * 
 	 * @return 表名称
-	 */
+	 *//*
+
 	public String getSheetName() {
 		return sheetName;
 	}
 
-	/**
+	*/
+/**
 	 * 设置表名称
 	 * 
 	 * @param sheetName
 	 *            表名称
-	 */
+	 *//*
+
 	public void setSheetName(String sheetName) {
 		this.sheetName = sheetName;
 	}
 
-	/**
+	*/
+/**
 	 * 获取属性
 	 * 
 	 * @return 属性
-	 */
+	 *//*
+
 	public String[] getProperties() {
 		return properties;
 	}
 
-	/**
+	*/
+/**
 	 * 设置属性
 	 * 
 	 * @param properties
 	 *            属性
-	 */
+	 *//*
+
 	public void setProperties(String[] properties) {
 		this.properties = properties;
 	}
 
-	/**
+	*/
+/**
 	 * 获取标题
 	 * 
 	 * @return 标题
-	 */
+	 *//*
+
 	public String[] getTitles() {
 		return titles;
 	}
 
-	/**
+	*/
+/**
 	 * 设置标题
 	 * 
 	 * @param titles
 	 *            标题
-	 */
+	 *//*
+
 	public void setTitles(String[] titles) {
 		this.titles = titles;
 	}
 
-	/**
+	*/
+/**
 	 * 获取列宽
 	 * 
 	 * @return 列宽
-	 */
+	 *//*
+
 	public Integer[] getWidths() {
 		return widths;
 	}
 
-	/**
+	*/
+/**
 	 * 设置列宽
 	 * 
 	 * @param widths
 	 *            列宽
-	 */
+	 *//*
+
 	public void setWidths(Integer[] widths) {
 		this.widths = widths;
 	}
 
-	/**
+	*/
+/**
 	 * 获取类型转换
 	 * 
 	 * @return 类型转换
-	 */
+	 *//*
+
 	public Converter[] getConverters() {
 		return converters;
 	}
 
-	/**
+	*/
+/**
 	 * 设置类型转换
 	 * 
 	 * @param converters
 	 *            类型转换
-	 */
+	 *//*
+
 	public void setConverters(Converter[] converters) {
 		this.converters = converters;
 	}
 
-	/**
+	*/
+/**
 	 * 获取数据
 	 * 
 	 * @return 数据
-	 */
+	 *//*
+
 	public Collection<?> getData() {
 		return data;
 	}
 
-	/**
+	*/
+/**
 	 * 设置数据
 	 * 
 	 * @param data
 	 *            数据
-	 */
+	 *//*
+
 	public void setData(Collection<?> data) {
 		this.data = data;
 	}
 
-	/**
+	*/
+/**
 	 * 获取附加内容
 	 * 
 	 * @return 附加内容
-	 */
+	 *//*
+
 	public String[] getContents() {
 		return contents;
 	}
 
-	/**
+	*/
+/**
 	 * 设置附加内容
 	 * 
 	 * @param contents
 	 *            附加内容
-	 */
+	 *//*
+
 	public void setContents(String[] contents) {
 		this.contents = contents;
 	}
 
-}
+}*/

@@ -1,11 +1,11 @@
 package com.gaoxi.model.user.vo.request;
 
 
-import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>Description: 获取验证码的请求参数</p>
@@ -23,4 +23,6 @@ public class VerifyCodeVO {
      */
     @NotNull
     private String phone;
+
+
 }

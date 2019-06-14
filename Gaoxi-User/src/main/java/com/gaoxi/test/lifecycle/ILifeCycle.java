@@ -6,8 +6,8 @@ package com.gaoxi.test.lifecycle;
  * @Date: 2018/12/27
  * @version: 1.0.0
  */
-public interface LifeCycle {
-    void init();
+public interface ILifeCycle {
+    public void init();
 
     void start();
 

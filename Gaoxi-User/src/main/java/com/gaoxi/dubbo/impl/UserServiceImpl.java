@@ -8,12 +8,13 @@ import com.gaoxi.model.user.vo.request.LoginReqVO;
 import com.gaoxi.service.base.AbstractBaseService;
 import com.gaoxi.service.user.UserService;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 @Service(version = "1.0.0")
 public class UserServiceImpl extends AbstractBaseService<UserMapper, UserEntity> implements UserService {
 

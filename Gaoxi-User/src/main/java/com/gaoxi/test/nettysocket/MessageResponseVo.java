@@ -1,4 +1,4 @@
-package com.dtyunxi.iservice.agent.app.api.vo.response;
+package com.gaoxi.test.nettysocket;
 
 import java.io.Serializable;
 import java.util.List;

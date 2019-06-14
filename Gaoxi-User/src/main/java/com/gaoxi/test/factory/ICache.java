@@ -7,4 +7,8 @@ package com.gaoxi.test.factory;
  * @version: 1.0.0
  */
 public interface ICache {
+    void set(String key,Object val);
+
+     Object get(String key);
+
 }

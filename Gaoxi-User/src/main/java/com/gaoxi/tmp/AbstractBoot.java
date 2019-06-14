@@ -1,4 +1,4 @@
-package com.gaoxi;
+package com.gaoxi.tmp;
 
 import com.taobao.pandora.boot.PandoraBootstrap;
 import org.springframework.boot.SpringApplication;

@@ -2,7 +2,8 @@
 package com.gaoxi.Test;
 
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -28,7 +29,7 @@ public class StringUtil {
 
 
     private static Random rnd = new Random();
-    private static Logger log = Logger.getLogger(StringUtil.class);
+    private static Logger log = LoggerFactory.getLogger(StringUtil.class);
 
     private static final String DEFAULT_CHARSET = "utf-8";
     private static final String ALGORITHM_MD5 = "MD5";

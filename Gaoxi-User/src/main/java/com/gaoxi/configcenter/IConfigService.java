@@ -7,4 +7,8 @@ package com.gaoxi.configcenter;
  * @version: 1.0.0
  */
 public interface IConfigService {
+
+    Object getConfig(String groupId,String dataId);
+
+    void addConfig(String groupId,String dataId,String content);
 }

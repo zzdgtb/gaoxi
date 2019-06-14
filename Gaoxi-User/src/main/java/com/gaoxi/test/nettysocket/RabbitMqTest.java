@@ -7,7 +7,8 @@ package com.gaoxi.test.nettysocket;
 public class RabbitMqTest {
 
     public static void main(String[] args){
-
+        Integer k=3;
+        System.out.println(k==3);
 
     }
 }
