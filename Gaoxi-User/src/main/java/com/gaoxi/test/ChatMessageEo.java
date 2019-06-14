@@ -1,9 +1,3 @@
-/**
- * @(#)ChatMessageEo.java 1.0 2018年11月10日
- *
- * Copyright (c) 2016, YUNXI. All rights reserved.
- * YUNXI PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 
 package com.gaoxi.test;
 
