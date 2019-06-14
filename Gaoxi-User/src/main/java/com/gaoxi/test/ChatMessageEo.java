@@ -13,6 +13,7 @@ import java.util.Date;
  * @version 1.0.0
  *
  */
+
 public class ChatMessageEo implements Serializable {
     /**
      * 用一句话描述这是什么
