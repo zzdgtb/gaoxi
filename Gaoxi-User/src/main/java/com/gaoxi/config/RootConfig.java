@@ -19,6 +19,8 @@ import org.springframework.context.annotation.PropertySource;
 public class RootConfig {
     @Value("${config.center.type}")
     private String configCenterType;
+    @Value("${gaoxi.registry.group}")
+    private String group;
 
     @Bean
     public AbstractConfigService registryService() {

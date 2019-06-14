@@ -87,19 +87,6 @@
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <!--<resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/filters/filter-*.properties</include>
-                </includes>
-            </resource>-->
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -107,6 +94,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
             <!--<plugin>
@@ -123,6 +111,7 @@
                 <version>${edas-pandora-boot-maven-plugin.version}</version>
                 <configuration>
                     <excludeSar>false</excludeSar>
+                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>

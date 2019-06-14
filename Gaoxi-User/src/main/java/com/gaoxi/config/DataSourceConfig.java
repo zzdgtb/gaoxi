@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -34,10 +35,11 @@ import java.util.Properties;
 public class DataSourceConfig {
     @Autowired
     private AbstractConfigService configService;
-
+    @Value("${gaoxi.registry.group}")
+    private String group;
     @Bean(name = {"dataSource"}, destroyMethod = "close")
     public DataSource dataSource() throws Exception {
-        DataSourceConfigVo dataSourceVo = (DataSourceConfigVo)JSONObject.parseObject(this.configService.getConfig("admin-server","dataSource-config").toString(), DataSourceConfigVo.class);
+        DataSourceConfigVo dataSourceVo = (DataSourceConfigVo)JSONObject.parseObject(this.configService.getConfig(group,"dataSource-config").toString(), DataSourceConfigVo.class);
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(dataSourceVo.getJdbcUrl());
         dataSource.setUsername(dataSourceVo.getJdbcUserName());

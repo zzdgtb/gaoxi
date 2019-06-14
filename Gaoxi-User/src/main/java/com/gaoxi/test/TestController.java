@@ -1,4 +1,4 @@
-package com.gaoxi.Test;
+package com.gaoxi.test;
 
 import com.gaoxi.config.RabbitUtil;
 import com.gaoxi.model.user.vo.response.ResultVO;

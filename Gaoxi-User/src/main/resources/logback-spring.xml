@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-       <!-- <property resource="config/config.properties"/> -->
-
+        <!--<property resource="config/config.properties"/>-->
+       <springProperty scope="context" name="gaoxi.env.module" source="gaoxi.env.module"/>
+       <springProperty scope="context" name="yes.server.logWorkDir" source="yes.server.logWorkDir"/>
        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
               <encoder>
                      <pattern>%date %-5level [v:${yes.log.version}] [h:${yes.server.localHost}] [m:${gaoxi.env.module}] [reqId:%X{yes.req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n</pattern>
@@ -22,7 +23,6 @@
                      </pattern>
               </encoder>
        </appender>
-
        <!-- 操作日志logback配置 -->
        <appender name="OPERATORLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
               <file>${yes.server.logWorkDir}/${gaoxi.env.module}/xl_flume.log</file>
@@ -37,7 +37,6 @@
                      <pattern>%msg%n</pattern>
               </encoder>
        </appender>
-
        <logger name="com.gaoxi.log.operatelog.OperatorLogger" level="INFO" additivity="false">
               <appender-ref ref="OPERATORLOG"/>
        </logger>
