@@ -37,7 +37,7 @@ public class DataSourceConfig {
 
     @Bean(name = {"dataSource"}, destroyMethod = "close")
     public DataSource dataSource() throws Exception {
-        DataSourceConfigVo dataSourceVo = (DataSourceConfigVo)JSONObject.parseObject(this.configService.getConfig("mytest","datasource").toString(), DataSourceConfigVo.class);
+        DataSourceConfigVo dataSourceVo = (DataSourceConfigVo)JSONObject.parseObject(this.configService.getConfig("admin-server","dataSource-config").toString(), DataSourceConfigVo.class);
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(dataSourceVo.getJdbcUrl());
         dataSource.setUsername(dataSourceVo.getJdbcUserName());

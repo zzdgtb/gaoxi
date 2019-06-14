@@ -121,9 +121,9 @@
                 <groupId>com.taobao.pandora</groupId>
                 <artifactId>pandora-boot-maven-plugin</artifactId>
                 <version>${edas-pandora-boot-maven-plugin.version}</version>
-                <!--<configuration>
-                    <excludeSar>${dtyunxi.deploy.excludesar}</excludeSar>
-                </configuration>-->
+                <configuration>
+                    <excludeSar>false</excludeSar>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>

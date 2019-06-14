@@ -1,6 +1,5 @@
 package com.gaoxi;
 
-import com.gaoxi.tmp.LoggerServletFilter;
 import com.taobao.pandora.boot.PandoraBootstrap;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -20,12 +19,12 @@ public class Application extends SpringBootServletInitializer {
         PandoraBootstrap.run(args);
         //initLogger();
         System.setProperty("yes.log.version", "0.1.0");
-        LoggerServletFilter.initLogger();
 
-        //Object obj = DiamondEnvRepo.getDefaultEnv().getConfig("agent.app.centerHttpVo", "dtyunxi-iservice-dev", 3000);
+
+        //Object obj = DiamondEnvRepo.getDefaultEnv().getConfig("agent.app.centerHttpVo", "gaoxi-iservice-dev", 3000);
 
         /*System.setProperty("yes.log.version", "0.1.0");
-        System.setProperty("dtyunxi.env.module", "DEV");*/
+        System.setProperty("gaoxi.env.module", "DEV");*/
         new SpringApplicationBuilder(Application.class).run(args);
         /*new AbstractBoot(Application.class, args) {
             @Override

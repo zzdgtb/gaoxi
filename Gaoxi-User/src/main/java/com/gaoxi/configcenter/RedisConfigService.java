@@ -13,7 +13,7 @@ import redis.clients.jedis.Jedis;
  */
 public class RedisConfigService extends AbstractConfigService {
 
-    private Logger logger = LoggerFactory.getLogger(EdasConfigService.class);
+    private Logger logger = LoggerFactory.getLogger(RedisConfigService.class);
 
     private Jedis jedis;
     @Value("${redis.config.center.url}")
