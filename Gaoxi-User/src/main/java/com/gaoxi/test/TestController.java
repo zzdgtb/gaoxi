@@ -2,8 +2,10 @@ package com.gaoxi.test;
 
 import com.gaoxi.config.RabbitUtil;
 import com.gaoxi.model.user.vo.response.ResultVO;
+import com.gaoxi.test.lock.MyLock;
 import com.gaoxi.test.nettysocket.DeleteMemberDto;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,39 @@ public class TestController {
     private RedisTemplate<String, String> rdisTemplate;
     @Resource
     private RabbitUtil rabbitUtil;
+
+    @Autowired
+    private MyLock myLock;
+
+    private final static String PATH = "test";
+
+    @GetMapping("/lock1")
+    public Boolean getLock1() {
+        Boolean flag;
+        myLock.acquireDistributedLock(PATH);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            flag = myLock.releaseDistributedLock(PATH);
+        }
+        flag = myLock.releaseDistributedLock(PATH);
+        return flag;
+    }
+
+    @GetMapping("/lock2")
+    public Boolean getLock2() {
+        Boolean flag;
+        myLock.acquireDistributedLock(PATH);
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            flag = myLock.releaseDistributedLock(PATH);
+        }
+        flag = myLock.releaseDistributedLock(PATH);
+        return flag;
+    }
 
     @GetMapping("/hello")
     public String index() {
