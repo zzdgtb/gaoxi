@@ -22,7 +22,6 @@ public interface TransPipeline {
      *
      */
     void shutdown();
-
     /**
      * 用于获取返回值<br/>
      *
