@@ -17,8 +17,8 @@ public class Main {
         // 创建DefaultAcsClient实例并初始化
         DefaultProfile profile = DefaultProfile.getProfile(
                 "cn-shanghai",          // 地域ID
-                "LTAIRMKezz8PzIXW",      // RAM账号的AccessKey ID
-                "xUByLCeSPN14S7CR5Dbvc2AtYDItRl"); // RAM账号Access Key Secret
+                "*****************",      // RAM账号的AccessKey ID
+                "******************************"); // RAM账号Access Key Secret
         IAcsClient client = new DefaultAcsClient(profile);
 
         // 创建API请求并设置参数
