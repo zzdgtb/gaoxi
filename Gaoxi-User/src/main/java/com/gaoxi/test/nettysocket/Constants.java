@@ -5,9 +5,9 @@ package com.gaoxi.test.nettysocket;
  * @since 0.1.0
  */
 public class Constants {
-    public static final String ACCESS_KEY_ID ="LTAIRMKezz8PzIXW";
+    public static final String ACCESS_KEY_ID ="*****************************";
 
-    public static final String ACCESS_KEY_SECRET ="xUByLCeSPN14S7CR5Dbvc2AtYDItRl";
+    public static final String ACCESS_KEY_SECRET ="*********************************";
 
     public static final String REGION_ID="cn-shanghai";
 
